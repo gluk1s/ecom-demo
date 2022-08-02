@@ -1,0 +1,14 @@
+1-LolaLiza, 59.97, F, clothes, 1-01, 1-02, 1-03
+2-Anna Field, 38.89, F, clothes, 2-01, 2-02, 2-03
+3-WAL G., 44.99, F, clothes, 3-01, 3-02, 3-03
+4-Nike Sportswear, 34.95, F, clothes, 4-01, 4-02, 4-03
+5-Missguided, 29.99, F, clothes, 5-01, 5-02, 5-03
+6-Lauren Ralph Lauren, 32.05, F, accessories, 6-01, 6-02, 6-03
+7-Anna Field, 12.99, F, accessories, 7-01, 7-02, 7-03
+8-Marc O'Polo, 16.00, M, clothes, 8-01, 8-02, 8-03
+9-Pier One, 29.99, M, clothes, 9-01, 9-02, 9-03
+10-Tommy Jeans, 59.95, M, clothes, 10-01, 10-02, 10-03
+11-Tommy Jeans, 24.95, M, clothes, 11-01, 11-02, 11-03
+12-Jack & Jones PREMIUM, 99.99, M, clothes, 12-01, 12-02, 12-03
+13-New Era, 21.95, M, accessories, 13-01, 13-02, 13-03
+14-Nike Sportswear, 24.95, M, accessories, 14-01, 14-02, 14-03
