@@ -2,7 +2,23 @@
 $title = "Shop";
 include ("./inc/header.php");
 include ("./models/Item.php"); 
-$arrayOfItems = showItems();
+$arrayOfItems = Item::showItems();
+
+// Checkout info
+if (isset($_SESSION['checkoutItems'])) {
+  var_dump($_SESSION['checkoutItems']);
+  echo "<br>";
+  echo "<br>";
+  foreach ($_SESSION['checkoutItems'] as $checkoutItem) {
+    print_r($checkoutItem);
+    echo "<br>";
+  }
+  echo "<br>";
+  if (isset($_SESSION['counter'])) {
+    echo $_SESSION['counter'];
+  }
+}
+
 ?>
 <!-- Pass items data to JS -->
 <script>
@@ -49,52 +65,7 @@ $arrayOfItems = showItems();
   </div>
 </div> -->
 
-
 <?php include("./inc/footer.php") ?>
-<?php 
-function showItems() {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "final_project";
-    $arrOfJSON = [];
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $db);
-
-    // Check connection
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT name, price, gender, type, img_dir1, img_dir2, img_dir3, id FROM items";
-
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-    // output data to array of JSON
-    while($row = $result->fetch_assoc()) {
-        $myJSON = json_encode(new Item(
-            $row["name"], 
-            $row["price"], 
-            $row["gender"], 
-            $row["type"],
-            $row["img_dir1"],
-            $row["img_dir2"],
-            $row["img_dir3"],
-            $row["id"]));
-
-        $arrOfJSON[] = $myJSON;
-    }
-
-    } else {
-    echo "0 results";
-    }
-    
-    $conn->close();
-    return $arrOfJSON;
-}
-?>
 
 <script>
     scriptByPage("shop");

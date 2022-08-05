@@ -33,6 +33,7 @@
                         <a class="nav-link active" aria-current="page" href="/projects/final_project">Home</a>
                         <a class="nav-link" href="/projects/final_project/contact">Contact</a>
                         <a class="nav-link" href="/projects/final_project/shop">Shop</a>
+                        <a class="nav-link" href="/projects/final_project/checkout">Checkout</a>
                     </div>
                 </div>
             </div>

@@ -402,6 +402,33 @@ margin-bottom: 25px;
     transition: all 0.5s;
 }
 
+/* Cart container */
+.table-container {
+    margin: auto;
+    margin-top: 40px;
+    max-width: 70%;
+}
+
+.cart-th-tr, .cart-td-tr {
+    border: 1px solid #b2b2b27c;
+    vertical-align: middle;
+}
+
+.cart-item-image-container {
+    display: inline-block;
+}
+
+.cart-item-image {
+    width: 60px;
+}
+
+.cart-item-name {
+    margin-left: 20px;
+    display: inline-block;
+}
+
+
+
 /* Footer */
 footer {
     background-color: #222222;

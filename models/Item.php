@@ -1,4 +1,5 @@
 <?php 
+include ("./models/DB.php");
 class Item {
     public $name;
     public $price;
@@ -30,12 +31,8 @@ class Item {
     }
     // Add item to db
     function addItemToDB() {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $db = "final_project";
-        $conn = new mysqli($servername, $username, $password, $db);
-        $stmt = $conn->prepare(
+        $db = new DB();
+        $stmt = $db->conn->prepare(
             "INSERT INTO items (name, price, gender, type, img_dir1, img_dir2, img_dir3) 
             VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sdsssss", 
@@ -49,7 +46,71 @@ class Item {
 
         $stmt->execute();
         $stmt->close();
-        $conn->close();
+        $db->conn->close();
     }
+
+    // Return Items data
+    public static function showItems() {
+        $arrOfJSON = [];
+        $db = new DB();
+        if ($db->conn->connect_error) {
+            die("Connection failed: " . $db->conn->connect_error);
+        }        
+        $sql = "SELECT name, price, gender, type, img_dir1, img_dir2, img_dir3, id FROM items";
+        $result = $db->conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data to array of JSON
+            while($row = $result->fetch_assoc()) {
+                $myJSON = json_encode(new Item(
+                    $row["name"], 
+                    $row["price"], 
+                    $row["gender"], 
+                    $row["type"],
+                    $row["img_dir1"],
+                    $row["img_dir2"],
+                    $row["img_dir3"],
+                    $row["id"]));
+        
+                $arrOfJSON[] = $myJSON;
+            }
+        } else {
+            echo "0 results";
+        }
+            
+        $db->conn->close();
+        return $arrOfJSON;
+    }
+
+    public static function showItem($itemID) {
+        $db = new DB();
+        if ($db->conn->connect_error) {
+            die("Connection failed: " . $db->conn->connect_error);
+        }        
+        $sql = "SELECT * FROM items WHERE id = " . $itemID . "";
+        $result = $db->conn->query($sql);
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $item = new Item(
+                    $row["name"], 
+                    $row["price"], 
+                    $row["gender"], 
+                    $row["type"],
+                    $row["img_dir1"],
+                    $row["img_dir2"],
+                    $row["img_dir3"],
+                    $row["id"]);
+            }
+            } else {
+            // Redirect to shop if id not exists
+            $db->conn->close();
+            header("Location: http://localhost/projects/final_project/shop");
+            exit();
+            }
+            $db->conn->close();
+            return $item;
+    }
+
+
 }
 ?>

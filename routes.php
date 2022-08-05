@@ -20,6 +20,8 @@ get('/items/$item_id', "./views/item.php");
 
 post('/items/$item_id', "./views/item.php");
 
+get('/checkout', "./views/checkout.php");
+
 
 // Dynamic GET. Example with 2 variables
 // The $name will be available in user.php

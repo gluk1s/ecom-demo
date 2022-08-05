@@ -3,49 +3,39 @@ $title = "Item";
 include ("./inc/header.php");
 include ("./models/Item.php");
 // url item query
-$itemID = substr($_SERVER['REQUEST_URI'], 30);
-// Take item data from db
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "final_project";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT * FROM items WHERE id = " . $itemID . "";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $item = new Item(
-        $row["name"], 
-        $row["price"], 
-        $row["gender"], 
-        $row["type"],
-        $row["img_dir1"],
-        $row["img_dir2"],
-        $row["img_dir3"],
-        $row["id"]);
-  }
-} else {
-    // Redirect to shop if id not exists
-    header("Location: http://localhost/projects/final_project/shop");
-    exit();
-}
+$itemID = substr($_SERVER['REQUEST_URI'], 30); 
+$item = Item::showItem($itemID);
 print_r($item);
-$conn->close(); 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sizeArr = ["S", "M", "L", "XL"];
     if (!isset($_SESSION)) {
         session_start();
     }
+    if (!isset($_SESSION['checkoutItems'])) {
+        $_SESSION['checkoutItems'] = [];
+    }
     if (in_array($_POST['size'], $sizeArr)) {
+        if (count($_SESSION['checkoutItems']) > 0) {
+            $counter = 0;
+            foreach ($_SESSION['checkoutItems'] as &$checkoutItem) {
+                // Increasing item qty which already in checkout (session)
+                if ($checkoutItem['id'] == $item->id && $checkoutItem['size'] == $_POST['size']) {
+                    $checkoutItem['qty']++;
+                    $counter++;
+                }
+            }
+            if ($counter == 0) {
+                $itemToAdd = array("id"=>$item->id, "size"=>$_POST['size'], "qty"=>1);
+                $_SESSION['checkoutItems'][] = $itemToAdd;
+            }
+        // Adding first item of this category to checkout (session)
+        } else {
+            $itemToAdd = array("id"=>$item->id, "size"=>$_POST['size'], "qty"=>1);
+            $_SESSION['checkoutItems'][] = $itemToAdd;
+        }
+
+        $_SESSION['counter'] = $counter;
         header("Location: http://localhost/projects/final_project/shop");
         exit();
     }
@@ -53,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: http://localhost/projects/final_project/items/" . $item->id);
         exit();
     }
-    // $_SESSION[''];
 }
 
 ?>
