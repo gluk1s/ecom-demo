@@ -4,21 +4,6 @@ include ("./inc/header.php");
 include ("./models/Item.php"); 
 $arrayOfItems = Item::showItems();
 
-// Checkout info
-if (isset($_SESSION['checkoutItems'])) {
-  var_dump($_SESSION['checkoutItems']);
-  echo "<br>";
-  echo "<br>";
-  foreach ($_SESSION['checkoutItems'] as $checkoutItem) {
-    print_r($checkoutItem);
-    echo "<br>";
-  }
-  echo "<br>";
-  if (isset($_SESSION['counter'])) {
-    echo $_SESSION['counter'];
-  }
-}
-
 ?>
 <!-- Pass items data to JS -->
 <script>

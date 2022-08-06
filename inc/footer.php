@@ -7,7 +7,7 @@
                         <li><a class="footer-link" href="">Women</a></li>
                         <li><a class="footer-link" href="">Men</a></li>
                         <li><a class="footer-link" href="">Shoes</a></li>
-                        <li><a class="footer-link" href="">Watches</a></li>
+                        <li><a class="footer-link" href="">Accessories</a></li>
                     </ul>
                 </div>
                 <div class="col col-md-3 col-6">

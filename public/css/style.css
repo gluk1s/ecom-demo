@@ -1,5 +1,6 @@
 :root {
     --grey: #b2b2b2;
+    --grey-op:#b2b2b290;
     --purple: #707FE0;
     --purple-op: #707fe07b;
 }
@@ -310,6 +311,7 @@ margin-bottom: 25px;
 
 /* Item Page */
 .item-page-container {
+    margin-top: 30px;
     margin-left: 25px;
     margin-right: 25px;
     margin-bottom: 30px;
@@ -402,19 +404,58 @@ margin-bottom: 25px;
     transition: all 0.5s;
 }
 
-/* Cart container */
+/* Cart page */
+
+.cart-empty {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.bi-bag-fill {
+    margin-bottom: 10px;
+}
+
+.cart-empty-btn {
+    margin-top: 30px;
+    border-radius: 20px;
+    width: 180px;
+    height: 40px;
+    background-color: #222222;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.cart-empty-btn:hover,
+.cart-empty-btn:active {
+    background-color: var(--purple);
+    transition: all 0.5s;
+}
+
 .table-container {
     margin: auto;
     margin-top: 40px;
     max-width: 70%;
+    margin-bottom: 50px;
 }
 
-.cart-th-tr, .cart-td-tr {
+.cart-first-td {
+    padding-left: 20px !important;
+}
+
+
+.cart-th-tr {
+    text-transform: uppercase;
+    height: 80px;
+}
+
+.cart-th-tr, .cart-td-tr, .cart-footer-tr {
     border: 1px solid #b2b2b27c;
     vertical-align: middle;
 }
 
 .cart-item-image-container {
+    margin-left: 10px;
     display: inline-block;
 }
 
@@ -427,7 +468,46 @@ margin-bottom: 25px;
     display: inline-block;
 }
 
+.cart-delete-btn,
+.cart-qty-btn {
+    all: unset;
+}
 
+.cart-qty-minus, .cart-qty-plus, .cart-qty {
+    display: inline-block;
+}
+
+.cart-qty-btn:hover > *,
+.cart-qty-btn:active > *,
+.cart-delete-btn:hover > *,
+.cart-delete-btn:active > * {
+    color: var(--purple);
+    transition: all 0.5s;
+}
+
+.cart-footer-tr {
+    height: 100px;
+}
+
+.cart-checkout-btn-container {
+    text-align: center;
+}
+
+.cart-checkout-btn {
+    border-radius: 20px;
+    width: 280px;
+    height: 40px;
+    background-color: #222222;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.cart-checkout-btn:hover,
+.cart-checkout-btn:active {
+    background-color: var(--purple);
+    transition: all 0.5s;
+}
 
 /* Footer */
 footer {

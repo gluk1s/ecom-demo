@@ -5,7 +5,6 @@ include ("./models/Item.php");
 // url item query
 $itemID = substr($_SERVER['REQUEST_URI'], 30); 
 $item = Item::showItem($itemID);
-print_r($item);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sizeArr = ["S", "M", "L", "XL"];
@@ -20,8 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $counter = 0;
             foreach ($_SESSION['checkoutItems'] as &$checkoutItem) {
                 // Increasing item qty which already in checkout (session)
-                if ($checkoutItem['id'] == $item->id && $checkoutItem['size'] == $_POST['size']) {
+                if ($checkoutItem['id'] == $item->id && 
+                    $checkoutItem['size'] == $_POST['size'] &&
+                    $checkoutItem['qty'] < 10) {
                     $checkoutItem['qty']++;
+                    $counter++;
+                }
+                else {
+                    // Qty limit reached
                     $counter++;
                 }
             }
