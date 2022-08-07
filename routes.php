@@ -30,9 +30,13 @@ post('/admin', './views/admin-login.php');
 
 get('/admin_homepage', './views/index-admin.php');
 
-get('/items/edit/$item_id', './views/item-edit.php');
+get('/item/edit/$item_id', './views/item-edit.php');
 
-post('/items/edit/$item_id', './views/item-edit.php');
+post('/item/edit/$item_id', './views/item-edit.php');
+
+get('/item/create', './views/item-create.php');
+
+post('/item/create', './views/item-create.php');
 
 // For GET or POST
 // The 404.php which is inside the views folder will be called

@@ -106,7 +106,7 @@ function scriptByPage(page) {
             let tmpResult = 
             `<div class="col-lg-3 col-md-4 col-sm-6 item-container">
             <div class="item-image-container"><img class="item-image" src="./public/items/${item["img_dir1"]}"></div>
-            <div class="item-text-container"><h5 class="item-name"><a class="item-name-link" href="${"/projects/final_project/items/edit/" + item["id"]}">${item["name"]}</a></h5><h5 class="item-price">${item["price"]} $</h5></div>
+            <div class="item-text-container"><h5 class="item-name"><a class="item-name-link" href="${"/projects/final_project/item/edit/" + item["id"]}">${item["name"]}</a></h5><h5 class="item-price">${item["price"]} $</h5></div>
             </div>`;
             resultAll += tmpResult;
         });
@@ -167,7 +167,7 @@ function htmlFilteredItemsAdmin(arrayOfItems) {
         let tmpResult = 
         `<div class="col-lg-3 col-md-4 col-sm-6 item-container">
         <div class="item-image-container"><img class="item-image" src="./public/items/${item["img_dir1"]}"></div>
-        <div class="item-text-container"><h5 class="item-name"><a class="item-name-link" href="${"/projects/final_project/items/edit/" + item["id"]}">${item["name"]}</a></h5><h5 class="item-price">${item["price"]} $</h5></div>
+        <div class="item-text-container"><h5 class="item-name"><a class="item-name-link" href="${"/projects/final_project/item/edit/" + item["id"]}">${item["name"]}</a></h5><h5 class="item-price">${item["price"]} $</h5></div>
         </div>`;
         result += tmpResult;
     });

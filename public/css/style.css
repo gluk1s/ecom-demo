@@ -638,3 +638,30 @@ footer {
     background-color: #222222;
     transition: all 0.5s;
 }
+
+/* Admin item */
+
+.admin-item-title {
+    margin-top: 15px;
+    font-size: 22px;
+}
+
+.admin-item-first-label {
+    font-size: 22px;
+}
+
+.admin-btn-delete {
+    border-radius: 20px;
+    width: 180px;
+    height: 40px;
+    background-color: #222222;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.admin-btn-delete:hover,
+.admin-btn-delete:active {
+    background-color: red;
+    transition: all 0.5s;
+}

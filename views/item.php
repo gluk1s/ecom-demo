@@ -25,7 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $checkoutItem['qty']++;
                     $counter++;
                 }
-                else {
+                else if ($checkoutItem['id'] == $item->id && 
+                    $checkoutItem['size'] == $_POST['size'] &&
+                    $checkoutItem['qty'] == 10) {
                     // Qty limit reached
                     $counter++;
                 }

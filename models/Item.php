@@ -49,6 +49,16 @@ class Item {
         $db->conn->close();
     }
 
+    // Delete item from db
+    public static function deleteItem($id) {
+        $db = new DB();
+        $stmt = $db->conn->prepare("DELETE FROM items WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+        $db->conn->close();
+    }
+
     // Return Items data
     public static function showItems() {
         $arrOfJSON = [];
@@ -119,10 +129,11 @@ class Item {
         $stmt = $db->conn->prepare(
             "UPDATE items SET name=?, price=?, gender=?, type=? 
             WHERE id=?");
-        $stmt->bind_param("sssi", 
+        $stmt->bind_param("sdssi", 
             $name,
             $price,
             $gender,
+            $type,
             $id);
 
         $stmt->execute();
