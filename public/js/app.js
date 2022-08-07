@@ -77,6 +77,72 @@ function scriptByPage(page) {
             $("#big-item-photo").html(photo);
         })
     }
+    else if (page == "admin-index") {
+        // convert str(json) to json
+        let itemsJSON = [];
+        items.forEach(element => {
+            itemsJSON.push(JSON.parse(element));
+        });
+        let itemsMale = [];
+        let itemsFemale = [];
+        let itemsAccessories = [];
+
+        // Make filtered arrays
+        itemsJSON.forEach(item => {
+            if (item["gender"] == "M") {
+                itemsMale.push(item);
+            }
+            else if (item["gender"] == "F") {
+                itemsFemale.push(item);
+            }
+
+            if (item["type"] == "accessories") {
+                itemsAccessories.push(item);
+            }
+        });
+        // All Products filter
+        let resultAll = "";
+        itemsJSON.forEach(item => {
+            let tmpResult = 
+            `<div class="col-lg-3 col-md-4 col-sm-6 item-container">
+            <div class="item-image-container"><img class="item-image" src="./public/items/${item["img_dir1"]}"></div>
+            <div class="item-text-container"><h5 class="item-name"><a class="item-name-link" href="${"/projects/final_project/items/edit/" + item["id"]}">${item["name"]}</a></h5><h5 class="item-price">${item["price"]} $</h5></div>
+            </div>`;
+            resultAll += tmpResult;
+        });
+        // insert all items into HTML
+        $("#filter-row").html(resultAll);
+
+        // Create eventListeners for filter buttons
+        let htmlResult = "";
+        $("#allItems").click(function() {
+            $(".filter-btn").removeClass("filter-btn-active");
+            $(this).addClass("filter-btn-active");
+            htmlResult = htmlFilteredItemsAdmin(itemsJSON);
+            $("#filter-row").html(htmlResult);
+        });
+
+        $("#womenItems").click(function() {
+            $(".filter-btn").removeClass("filter-btn-active");
+            $(this).addClass("filter-btn-active");
+            htmlResult = htmlFilteredItemsAdmin(itemsFemale);
+            $("#filter-row").html(htmlResult);
+        });
+
+        $("#menItems").click(function() {
+            $(".filter-btn").removeClass("filter-btn-active");
+            $(this).addClass("filter-btn-active");
+            htmlResult = htmlFilteredItemsAdmin(itemsMale);
+            $("#filter-row").html(htmlResult);
+        });
+
+        $("#accessoriesItems").click(function() {
+            $(".filter-btn").removeClass("filter-btn-active");
+            $(this).addClass("filter-btn-active");
+            htmlResult = htmlFilteredItemsAdmin(itemsAccessories);
+            $("#filter-row").html(htmlResult);
+        });
+    }
     else{
         console.log("ne sitas");
     }
@@ -89,6 +155,19 @@ function htmlFilteredItems(arrayOfItems) {
         `<div class="col-lg-3 col-md-4 col-sm-6 item-container">
         <div class="item-image-container"><img class="item-image" src="./public/items/${item["img_dir1"]}"></div>
         <div class="item-text-container"><h5 class="item-name"><a class="item-name-link" href="${"/projects/final_project/items/" + item["id"]}">${item["name"]}</a></h5><h5 class="item-price">${item["price"]} $</h5></div>
+        </div>`;
+        result += tmpResult;
+    });
+    return result;
+}
+
+function htmlFilteredItemsAdmin(arrayOfItems) {
+    let result = "";
+    arrayOfItems.forEach(item => {
+        let tmpResult = 
+        `<div class="col-lg-3 col-md-4 col-sm-6 item-container">
+        <div class="item-image-container"><img class="item-image" src="./public/items/${item["img_dir1"]}"></div>
+        <div class="item-text-container"><h5 class="item-name"><a class="item-name-link" href="${"/projects/final_project/items/edit/" + item["id"]}">${item["name"]}</a></h5><h5 class="item-price">${item["price"]} $</h5></div>
         </div>`;
         result += tmpResult;
     });

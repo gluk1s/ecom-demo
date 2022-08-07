@@ -111,6 +111,25 @@ class Item {
             return $item;
     }
 
+    public static function updateItem($id, $name, $price, $gender, $type) {
+        $db = new DB();
+        if ($db->conn->connect_error) {
+            die("Connection failed: " . $db->conn->connect_error);
+        }    
+        $stmt = $db->conn->prepare(
+            "UPDATE items SET name=?, price=?, gender=?, type=? 
+            WHERE id=?");
+        $stmt->bind_param("sssi", 
+            $name,
+            $price,
+            $gender,
+            $id);
+
+        $stmt->execute();
+        $stmt->close();
+        $db->conn->close();
+    }
+
 
 }
 ?>

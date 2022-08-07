@@ -27,7 +27,7 @@ $arrayOfItems = Item::showItems();
     </div>
 </div>
 
-</div>
+<!-- </div> -->
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
   Launch static backdrop modal
 </button> -->

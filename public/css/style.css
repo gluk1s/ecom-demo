@@ -614,3 +614,27 @@ footer {
     color: var(--purple);
     transition: all 0.5s;
 }
+
+/* admin login */
+
+.admin-login-container {
+    max-width: 70%;
+    text-align: center;
+    margin: auto;
+}
+
+.admin-login-btn {
+    border-radius: 20px;
+    width: 180px;
+    height: 40px;
+    background-color: var(--purple);
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+
+.admin-login-btn:hover,
+.admin-login-btn:active {
+    background-color: #222222;
+    transition: all 0.5s;
+}
