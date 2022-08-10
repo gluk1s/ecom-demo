@@ -3,7 +3,6 @@ $title = "Item create";
 include ("./inc/header-admin.php");
 include ("./models/Item.php");
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $validated = validateInputs($_POST['name'], 
         $_POST['price'],
@@ -33,9 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     header("Location: http://localhost/projects/final_project/admin_homepage");
     exit();
-
 }
-
 ?>
 
 <!-- HTML Code -->

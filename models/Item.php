@@ -29,6 +29,7 @@ class Item {
         $this->img_dir3 = $img_dir3;
         $this->id = $id;
     }
+
     // Add item to db
     function addItemToDB() {
         $db = new DB();
@@ -86,11 +87,11 @@ class Item {
         } else {
             echo "0 results";
         }
-            
         $db->conn->close();
         return $arrOfJSON;
     }
 
+    // Return Item data by ID
     public static function showItem($itemID) {
         $db = new DB();
         if ($db->conn->connect_error) {
@@ -121,6 +122,7 @@ class Item {
             return $item;
     }
 
+    // Update item data
     public static function updateItem($id, $name, $price, $gender, $type) {
         $db = new DB();
         if ($db->conn->connect_error) {
@@ -140,7 +142,5 @@ class Item {
         $stmt->close();
         $db->conn->close();
     }
-
-
 }
 ?>

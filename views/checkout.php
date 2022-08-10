@@ -83,7 +83,6 @@ if (isset($_SESSION['checkoutItems'])) {
                     <th class="cart-th" scope="col">Price</th>
                     <th class="cart-th" scope="col">Qty</th>
                     <th class="cart-th" scope="col">Total</th>
-
                 </tr>
             </thead>
             <tbody>

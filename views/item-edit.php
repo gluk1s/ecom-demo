@@ -124,17 +124,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deleteItem'])) {
                 </form>
                 <div class="item-form-btn-container">
                     <form action="" method="post">
-                        <button type="submit" class="admin-btn-delete" name="deleteItem" value="<?= $itemID; ?>">DELETE
-                            ITEM</button>
+                        <button type="submit" class="admin-btn-delete" name="deleteItem" value="<?= $itemID; ?>">
+                            DELETE ITEM
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- </div> -->
-
 
 <?php 
 include("./inc/footer-admin.php"); 
@@ -156,7 +154,6 @@ function validateInputs($name, $price, $gender, $type) {
     if (!in_array($type, $types)) {
         $validation = false;
     }
-
     if (!is_numeric($price)) {
         $validation = false;
     }

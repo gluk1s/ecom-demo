@@ -17,7 +17,6 @@ class User {
         $db = new DB();
         $stmt = $db->conn->prepare("INSERT INTO users (username, password, type) 
             VALUES (?, ?, ?)");
-
         $password = "admin";
         $user_type = "admin";
         $hashed_paswrod = $hashed_password = password_hash($password, PASSWORD_DEFAULT);

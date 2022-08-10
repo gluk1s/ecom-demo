@@ -25,6 +25,7 @@ body {
 .index-container {
     min-height: calc(100vh - 70px);
 }
+
 .carousel-item .carousel-item-1,
 .carousel-item .carousel-item-2,
 .carousel-item .carousel-item-3 {
@@ -52,6 +53,7 @@ body {
     fill: var(--purple) !important;
     transition: all 0.7s;
 }
+
 
 /* Index card links */
 
@@ -119,6 +121,7 @@ body {
     color: white;
     cursor: pointer;
 }
+
 .index-link-box:hover {
     background-color: #707fe07b;
 }
@@ -310,6 +313,7 @@ margin-bottom: 25px;
 }
 
 /* Item Page */
+
 .item-page-container {
     margin-top: 30px;
     margin-left: 25px;
@@ -510,6 +514,7 @@ margin-bottom: 25px;
 }
 
 /* Footer */
+
 footer {
     background-color: #222222;
     width: 100%;

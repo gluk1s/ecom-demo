@@ -19,7 +19,7 @@
 </head>
 
 <body>
-
+    <!-- Validation if admin is logged in -->
     <?php 
 if (!isset($_SESSION)) {
     header("Location: http://localhost/projects/final_project/admin");
@@ -33,7 +33,6 @@ if (isset($_SESSION)) {
     }
 }
 ?>
-
     <div>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
@@ -45,7 +44,8 @@ if (isset($_SESSION)) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link" aria-current="page" href="/projects/final_project/admin_homepage">Home-Admin panel</a>
+                        <a class="nav-link" aria-current="page" href="/projects/final_project/admin_homepage">Home-Admin
+                            panel</a>
                         <a class="nav-link" href="/projects/final_project/item/create">Add New Item</a>
                     </div>
                 </div>

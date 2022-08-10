@@ -2,6 +2,7 @@ function scriptByPage(page) {
     if(page == "sitas"){
         console.log("sitas");
     }
+    // Create filter by clothes category
     else if (page == "shop") {
         // convert str(json) to json
         let itemsJSON = [];
@@ -68,6 +69,7 @@ function scriptByPage(page) {
             $("#filter-row").html(htmlResult);
         });
     }
+    // Event listeners for mini photos
     else if (page == "item") {
         $(".item-mini-photo").click(function() {
             $(".item-mini-photo").removeClass("mini-photo-active");
@@ -77,6 +79,7 @@ function scriptByPage(page) {
             $("#big-item-photo").html(photo);
         })
     }
+    // Create filter by clothes category
     else if (page == "admin-index") {
         // convert str(json) to json
         let itemsJSON = [];
@@ -148,6 +151,7 @@ function scriptByPage(page) {
     }
 }
 
+// Generates string of filtered divs
 function htmlFilteredItems(arrayOfItems) {
     let result = "";
     arrayOfItems.forEach(item => {
@@ -161,6 +165,7 @@ function htmlFilteredItems(arrayOfItems) {
     return result;
 }
 
+// Generates string of filtered divs with edit link
 function htmlFilteredItemsAdmin(arrayOfItems) {
     let result = "";
     arrayOfItems.forEach(item => {
